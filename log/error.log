@@ -853,3 +853,267 @@
 "httpd_file: Can't accesswww/favicon.ico"
 [30/Nov/2009:22:17:23 -0600] access to /erl/monitor/add?node=test failed for 0:0:0:0:0:FFFF:7F00:1 reason: 
 "Not found"
+[30/Nov/2009:22:36:25 -0600] access to /favicon.ico failed for 0:0:0:0:0:FFFF:7F00:1 reason: 
+"httpd_file: Can't accesswww/favicon.ico"
+[30/Nov/2009:22:36:27 -0600] access to /erl/monitor/add?node=test failed for 0:0:0:0:0:FFFF:7F00:1 reason: 
+"Not found"
+[30/Nov/2009:22:37:50 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.957.0>,normal}
+[30/Nov/2009:22:38:15 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.964.0>,normal}
+[30/Nov/2009:22:38:20 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.966.0>,normal}
+[30/Nov/2009:22:38:20 -0600] access to /favicon.ico failed for 0:0:0:0:0:FFFF:7F00:1 reason: 
+"httpd_file: Can't accesswww/favicon.ico"
+[30/Nov/2009:22:40:54 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1002.0>,normal}
+[30/Nov/2009:22:40:54 -0600] access to /favicon.ico failed for 0:0:0:0:0:FFFF:7F00:1 reason: 
+"httpd_file: Can't accesswww/favicon.ico"
+[30/Nov/2009:22:40:55 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1005.0>,normal}
+[30/Nov/2009:22:40:56 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1007.0>,normal}
+[30/Nov/2009:22:40:57 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1009.0>,normal}
+[30/Nov/2009:22:40:57 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1011.0>,normal}
+[30/Nov/2009:22:41:37 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1013.0>,normal}
+[30/Nov/2009:22:41:37 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1016.0>,normal}
+[30/Nov/2009:22:41:38 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1019.0>,normal}
+[30/Nov/2009:22:41:38 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1022.0>,normal}
+[30/Nov/2009:22:41:39 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1025.0>,normal}
+[30/Nov/2009:22:41:39 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1028.0>,normal}
+[30/Nov/2009:22:41:40 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1031.0>,normal}
+[30/Nov/2009:22:41:41 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1034.0>,normal}
+[30/Nov/2009:22:41:42 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1037.0>,normal}
+[30/Nov/2009:22:41:43 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1040.0>,normal}
+[30/Nov/2009:22:48:01 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1125.0>,normal}
+[30/Nov/2009:22:48:10 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1136.0>,normal}
+[30/Nov/2009:22:48:27 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1163.0>,normal}
+[30/Nov/2009:22:48:31 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1172.0>,normal}
+[30/Nov/2009:22:48:35 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1175.0>,normal}
+[30/Nov/2009:22:48:36 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1178.0>,normal}
+[30/Nov/2009:22:48:54 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1181.0>,normal}
+[30/Nov/2009:22:49:34 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1202.0>,normal}
+[30/Nov/2009:22:49:36 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1205.0>,normal}
+[30/Nov/2009:22:49:37 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1208.0>,normal}
+[30/Nov/2009:22:49:37 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1211.0>,normal}
+[30/Nov/2009:22:49:39 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1214.0>,normal}
+[30/Nov/2009:22:49:39 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1216.0>,normal}
+[30/Nov/2009:22:49:39 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1218.0>,normal}
+[30/Nov/2009:22:49:39 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1220.0>,normal}
+[30/Nov/2009:22:49:39 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1222.0>,normal}
+[30/Nov/2009:22:49:41 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1224.0>,normal}
+[30/Nov/2009:22:49:43 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1227.0>,normal}
+[30/Nov/2009:22:49:43 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1229.0>,normal}
+[30/Nov/2009:22:49:43 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1231.0>,normal}
+[30/Nov/2009:22:49:43 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1233.0>,normal}
+[30/Nov/2009:22:49:43 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1235.0>,normal}
+[30/Nov/2009:22:49:58 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1242.0>,normal}
+[30/Nov/2009:22:49:58 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1244.0>,normal}
+[30/Nov/2009:22:49:58 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1246.0>,normal}
+[30/Nov/2009:22:49:58 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1248.0>,normal}
+[30/Nov/2009:22:49:58 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1250.0>,normal}
+[30/Nov/2009:22:50:00 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1252.0>,normal}
+[30/Nov/2009:22:50:00 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1254.0>,normal}
+[30/Nov/2009:22:50:00 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1256.0>,normal}
+[30/Nov/2009:22:50:00 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1258.0>,normal}
+[30/Nov/2009:22:50:00 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1260.0>,normal}
+[30/Nov/2009:22:50:14 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1265.0>,normal}
+[30/Nov/2009:22:50:29 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1285.0>,normal}
+[30/Nov/2009:22:50:31 -0600], traverse exit from apply: mod_esi:do => 
+{mod_esi_linked_process_died,<0.1287.0>,normal}
+[30/Nov/2009:22:57:49 -0600], traverse exit from apply: mod_esi:do => 
+{badarg,[{erlang,iolist_size,
+                 [[60,104,116,109,108,62,60,98,111,100,121,62,87,104,97,116,
+                   63,32,110,111,100,101,61,116,101,115,116,n,o,d,e,'=',60,98,
+                   114,62,60,97,32,104,114,101,102,61,109,97,105,110,62,66,97,
+                   99,107,32,116,111,32,77,97,105,110,60,47,97,62,60,47,98,
+                   111,100,121,62,60,47,104,116,109,108,62]]},
+         {http_chunk,encode,1},
+         {httpd_response,send_chunk,3},
+         {mod_esi,handle_body,6},
+         {mod_esi,erl_scheme_webpage_chunk,5},
+         {mod_esi,generate_webpage,7},
+         {httpd_response,traverse_modules,2},
+         {httpd_response,generate_and_send_response,1}]}
+[30/Nov/2009:22:57:52 -0600], traverse exit from apply: mod_esi:do => 
+{badarg,[{erlang,iolist_size,
+                 [[60,104,116,109,108,62,60,98,111,100,121,62,87,104,97,116,
+                   63,32,110,111,100,101,61,116,101,115,116,50,n,o,d,e,'=',60,
+                   98,114,62,60,97,32,104,114,101,102,61,109,97,105,110,62,66,
+                   97,99,107,32,116,111,32,77,97,105,110,60,47,97,62,60,47,98,
+                   111,100,121,62,60,47,104,116,109,108,62]]},
+         {http_chunk,encode,1},
+         {httpd_response,send_chunk,3},
+         {mod_esi,handle_body,6},
+         {mod_esi,erl_scheme_webpage_chunk,5},
+         {mod_esi,generate_webpage,7},
+         {httpd_response,traverse_modules,2},
+         {httpd_response,generate_and_send_response,1}]}
+[30/Nov/2009:22:58:03 -0600], traverse exit from apply: mod_esi:do => 
+{badarg,[{erlang,iolist_size,
+                 [[60,104,116,109,108,62,60,98,111,100,121,62,87,104,97,116,
+                   63,32,110,111,100,101,61,43,49,50,51,52,n,o,d,e,'=',60,98,
+                   114,62,60,97,32,104,114,101,102,61,109,97,105,110,62,66,97,
+                   99,107,32,116,111,32,77,97,105,110,60,47,97,62,60,47,98,
+                   111,100,121,62,60,47,104,116,109,108,62]]},
+         {http_chunk,encode,1},
+         {httpd_response,send_chunk,3},
+         {mod_esi,handle_body,6},
+         {mod_esi,erl_scheme_webpage_chunk,5},
+         {mod_esi,generate_webpage,7},
+         {httpd_response,traverse_modules,2},
+         {httpd_response,generate_and_send_response,1}]}
+[30/Nov/2009:22:58:06 -0600], traverse exit from apply: mod_esi:do => 
+{badarg,[{erlang,iolist_size,
+                 [[60,104,116,109,108,62,60,98,111,100,121,62,87,104,97,116,
+                   63,32,110,111,100,101,61,49,50,51,52,n,o,d,e,'=',60,98,114,
+                   62,60,97,32,104,114,101,102,61,109,97,105,110,62,66,97,99,
+                   107,32,116,111,32,77,97,105,110,60,47,97,62,60,47,98,111,
+                   100,121,62,60,47,104,116,109,108,62]]},
+         {http_chunk,encode,1},
+         {httpd_response,send_chunk,3},
+         {mod_esi,handle_body,6},
+         {mod_esi,erl_scheme_webpage_chunk,5},
+         {mod_esi,generate_webpage,7},
+         {httpd_response,traverse_modules,2},
+         {httpd_response,generate_and_send_response,1}]}
+[30/Nov/2009:22:58:06 -0600], traverse exit from apply: mod_esi:do => 
+{badarg,[{erlang,iolist_size,
+                 [[60,104,116,109,108,62,60,98,111,100,121,62,87,104,97,116,
+                   63,32,110,111,100,101,61,49,50,51,52,n,o,d,e,'=',60,98,114,
+                   62,60,97,32,104,114,101,102,61,109,97,105,110,62,66,97,99,
+                   107,32,116,111,32,77,97,105,110,60,47,97,62,60,47,98,111,
+                   100,121,62,60,47,104,116,109,108,62]]},
+         {http_chunk,encode,1},
+         {httpd_response,send_chunk,3},
+         {mod_esi,handle_body,6},
+         {mod_esi,erl_scheme_webpage_chunk,5},
+         {mod_esi,generate_webpage,7},
+         {httpd_response,traverse_modules,2},
+         {httpd_response,generate_and_send_response,1}]}
+[30/Nov/2009:22:58:10 -0600], traverse exit from apply: mod_esi:do => 
+{badarg,[{erlang,iolist_size,
+                 [[60,104,116,109,108,62,60,98,111,100,121,62,87,104,97,116,
+                   63,32,110,111,100,101,61,97,115,100,102,97,115,100,102,n,o,
+                   d,e,'=',60,98,114,62,60,97,32,104,114,101,102,61,109,97,
+                   105,110,62,66,97,99,107,32,116,111,32,77,97,105,110,60,47,
+                   97,62,60,47,98,111,100,121,62,60,47,104,116,109,108,62]]},
+         {http_chunk,encode,1},
+         {httpd_response,send_chunk,3},
+         {mod_esi,handle_body,6},
+         {mod_esi,erl_scheme_webpage_chunk,5},
+         {mod_esi,generate_webpage,7},
+         {httpd_response,traverse_modules,2},
+         {httpd_response,generate_and_send_response,1}]}
+[30/Nov/2009:22:58:12 -0600], traverse exit from apply: mod_esi:do => 
+{badarg,[{erlang,iolist_size,
+                 [[60,104,116,109,108,62,60,98,111,100,121,62,87,104,97,116,
+                   63,32,110,111,100,101,61,97,115,100,102,97,115,100,102,n,o,
+                   d,e,'=',60,98,114,62,60,97,32,104,114,101,102,61,109,97,
+                   105,110,62,66,97,99,107,32,116,111,32,77,97,105,110,60,47,
+                   97,62,60,47,98,111,100,121,62,60,47,104,116,109,108,62]]},
+         {http_chunk,encode,1},
+         {httpd_response,send_chunk,3},
+         {mod_esi,handle_body,6},
+         {mod_esi,erl_scheme_webpage_chunk,5},
+         {mod_esi,generate_webpage,7},
+         {httpd_response,traverse_modules,2},
+         {httpd_response,generate_and_send_response,1}]}
+[30/Nov/2009:22:58:27 -0600], traverse exit from apply: mod_esi:do => 
+{badarg,[{erlang,iolist_size,
+                 [[60,104,116,109,108,62,60,98,111,100,121,62,87,104,97,116,
+                   63,32,110,111,100,101,61,97,115,100,102,97,115,100,102,n,
+                   60,98,114,62,60,97,32,104,114,101,102,61,109,97,105,110,62,
+                   66,97,99,107,32,116,111,32,77,97,105,110,60,47,97,62,60,47,
+                   98,111,100,121,62,60,47,104,116,109,108,62]]},
+         {http_chunk,encode,1},
+         {httpd_response,send_chunk,3},
+         {mod_esi,handle_body,6},
+         {mod_esi,erl_scheme_webpage_chunk,5},
+         {mod_esi,generate_webpage,7},
+         {httpd_response,traverse_modules,2},
+         {httpd_response,generate_and_send_response,1}]}
+[30/Nov/2009:22:58:37 -0600], traverse exit from apply: mod_esi:do => 
+{badarg,[{erlang,iolist_size,
+                 [[60,104,116,109,108,62,60,98,111,100,121,62,87,104,97,116,
+                   63,32,110,111,100,101,61,97,115,100,102,97,115,100,102,n,
+                   60,98,114,62,60,97,32,104,114,101,102,61,109,97,105,110,62,
+                   66,97,99,107,32,116,111,32,77,97,105,110,60,47,97,62,60,47,
+                   98,111,100,121,62,60,47,104,116,109,108,62]]},
+         {http_chunk,encode,1},
+         {httpd_response,send_chunk,3},
+         {mod_esi,handle_body,6},
+         {mod_esi,erl_scheme_webpage_chunk,5},
+         {mod_esi,generate_webpage,7},
+         {httpd_response,traverse_modules,2},
+         {httpd_response,generate_and_send_response,1}]}
+[30/Nov/2009:22:58:43 -0600], traverse exit from apply: mod_esi:do => 
+{badarg,[{erlang,iolist_size,
+                 [[60,104,116,109,108,62,60,98,111,100,121,62,87,104,97,116,
+                   63,32,110,111,100,101,61,97,97,115,100,102,97,115,100,102,
+                   n,60,98,114,62,60,97,32,104,114,101,102,61,109,97,105,110,
+                   62,66,97,99,107,32,116,111,32,77,97,105,110,60,47,97,62,60,
+                   47,98,111,100,121,62,60,47,104,116,109,108,62]]},
+         {http_chunk,encode,1},
+         {httpd_response,send_chunk,3},
+         {mod_esi,handle_body,6},
+         {mod_esi,erl_scheme_webpage_chunk,5},
+         {mod_esi,generate_webpage,7},
+         {httpd_response,traverse_modules,2},
+         {httpd_response,generate_and_send_response,1}]}
+[03/Dec/2009:15:25:52 -0600] access to /erl/monitor/main failed for 0:0:0:0:0:FFFF:7F00:1 reason: 
+"Not found"
+[03/Dec/2009:15:25:54 -0600] access to /erl/monitor/main failed for 0:0:0:0:0:FFFF:7F00:1 reason: 
+"Not found"
+[03/Dec/2009:15:26:29 -0600] access to /erl/monitor/main failed for 0:0:0:0:0:FFFF:7F00:1 reason: 
+"Not found"
+[03/Dec/2009:15:27:11 -0600] access to /erl/monitor/main failed for 0:0:0:0:0:FFFF:7F00:1 reason: 
+"Not found"
+[03/Dec/2009:15:27:12 -0600] access to /erl/monitor/main failed for 0:0:0:0:0:FFFF:7F00:1 reason: 
+"Not found"

@@ -1,9 +1,12 @@
 -module(monitor).
--export([start/0, main/3, details/3]).
+-export([start/0, main/3, details/3, add/3]).
 
 -define(Headers, "Content-Type: text/html\r\n\r\n").
 -define(Top, "<html><body>").
 -define(Bottom, "</body></html>").
+
+-define(BackToMain, "<br><a href=main>Back to Main</a>").
+-define(AddNode, "<br><form name=add action=add method=get>Add a node: <input type=text name=node><input type=submit value=Add></form>").
 
 start() ->
  inets:start(),
@@ -21,14 +24,29 @@ start() ->
 
 main(SessionID, _Env, _Input) ->
 	KnownNodes = nodes(known),
-	mod_esi:deliver(SessionID, [?Headers, ?Top, "Known nodes:", parseKnownNodes(KnownNodes), "<br><form name=add action=add method=get>Add a node: <input type=text name=node><input type=submit value=Add></form>", ?Bottom]).
+	CurrentNode = node(),
+	{ok, IPAddress} = get_ip_address(),
+	IPAddressString = io_lib:write(IPAddress),
+	mod_esi:deliver(SessionID, [?Headers, ?Top, "Known nodes:", parseKnownNodes(KnownNodes), ?AddNode, IPAddressString, ?Bottom]).
 
 details(SessionID, _Env, Input) ->
 	Response = case net_adm:ping(list_to_atom(Input)) of
-		pong -> "Running";
+		pong ->
+			"Running";
 		pang -> "Stopped"
 	end,
-	mod_esi:deliver(SessionID, [?Headers, ?Top, "Details for: ", Input, " ", Response, "<br><a href=main>Back to Main</a>", ?Bottom]).
+	mod_esi:deliver(SessionID, [?Headers, ?Top, "Details for: ", Input, " ", Response, ?BackToMain, ?Bottom]).
+
+get_ip_address() ->
+	inet:getif().
+
+add(SessionID, Env, [$n, $o, $d, $e, $= | Input]) ->
+	case net_adm:ping(list_to_atom(Input)) of
+        pong -> main(SessionID, Env, Input);
+        pang -> mod_esi:deliver(SessionID, [?Headers, ?Top, "Can't connect to node ", Input, ?BackToMain, ?Bottom])
+    end;
+add(SessionID, _Env, Input) ->	
+	mod_esi:deliver(SessionID, [?Headers, ?Top, "What? ", Input, ?BackToMain, ?Bottom]).
 
 parseKnownNodes(KnownNodes) ->
 	parseKnownNodes(KnownNodes, "</table>").
