@@ -25,20 +25,19 @@ start() ->
 main(SessionID, _Env, _Input) ->
 	KnownNodes = nodes(known),
 	CurrentNode = node(),
-	{ok, IPAddress} = get_ip_address(),
-	IPAddressString = io_lib:write(IPAddress),
-	mod_esi:deliver(SessionID, [?Headers, ?Top, "Known nodes:", parseKnownNodes(KnownNodes), ?AddNode, IPAddressString, ?Bottom]).
+	IPAddress = ip:get_ip_address_string(),
+	mod_esi:deliver(SessionID, [?Headers, ?Top, "Known nodes:", parseKnownNodes(KnownNodes), ?AddNode, IPAddress, ?Bottom]).
 
 details(SessionID, _Env, Input) ->
-	Response = case net_adm:ping(list_to_atom(Input)) of
-		pong ->
-			"Running";
+	Node = list_to_atom(Input),
+	Response = case net_adm:ping(Node) of
+		pong ->	
+			spawn(Node, ip, run, []),
+			IPAddress = ip:get_ip_address_string(),
+			"Running<br>" ++ IPAddress;
 		pang -> "Stopped"
 	end,
 	mod_esi:deliver(SessionID, [?Headers, ?Top, "Details for: ", Input, " ", Response, ?BackToMain, ?Bottom]).
-
-get_ip_address() ->
-	inet:getif().
 
 add(SessionID, Env, [$n, $o, $d, $e, $= | Input]) ->
 	case net_adm:ping(list_to_atom(Input)) of
