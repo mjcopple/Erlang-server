@@ -33,8 +33,8 @@ details(SessionID, _Env, Input) ->
 	Response = case net_adm:ping(Node) of
 		pong ->	
 			spawn(Node, ip, run, []) ! ip_address,
-			receive {From, ip_address, IPAddress} -> done end,
-			%IPAddress = ip:get_ip_address_string(),
+			receive Msg -> done end,
+			IPAddress = ip:get_ip_address_string(),
 			"Running<br>" ++ IPAddress;
 		pang -> "Stopped"
 	end,

@@ -5,7 +5,8 @@
 run() ->
 	receive
 		{From, ip_address} ->
-			From ! get_ip_address_string()
+			From ! {ip_address, get_ip_address_string()},
+			run()
 	end.
 
 get_ip_address_string() ->
