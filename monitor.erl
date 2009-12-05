@@ -2,7 +2,7 @@
 -export([start/0, main/3, details/3, add/3, allKnownNodes/0, update/0, update/3]).
 
 -define(Headers, "Content-Type: text/html\r\n\r\n").
--define(Top, "<html><body>").
+-define(Top, "<html><head><title>Erlang cluster</title></head><body>").
 -define(Bottom, "</body></html>").
 
 -define(BackToMain, "<br><a href=main>Back to Main</a>").
