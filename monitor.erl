@@ -2,7 +2,7 @@
 -export([start/0, main/3, details/3, add/3, allKnownNodes/0, update/0, update/3]).
 
 -define(Headers, "Content-Type: text/html\r\n\r\n").
--define(Top, "<html><head><title>Erlang cluster</title></head><body>").
+-define(Top, "<html><head><link href=\"../../../styles.css\" rel=\"stylesheet\" type=\"text/css\"><title>Erlang cluster</title></head><body>").
 -define(Bottom, "</body></html>").
 
 -define(BackToMain, "<br><a href=main>Back to Main</a>").
@@ -23,9 +23,9 @@ start() ->
    {mime_types,[{"html","text/html"}, {"css","text/css"}, {"js","application/x-javascript"}]}]).
 
 main(SessionID, _Env, _Input) ->
-	CurrentNode = node(),
+	CurrentNode = atom_to_list(node()),
 	IPAddress = ip:get_ip_address_string(),
-	mod_esi:deliver(SessionID, [?Headers, ?Top, "Known nodes:", allKnownNodes(), ?AddNode, IPAddress, ?Bottom]).
+	mod_esi:deliver(SessionID, [?Headers, ?Top, CurrentNode, "<br>Known nodes:", allKnownNodes(), ?AddNode, IPAddress, ?Bottom]).
 
 details(SessionID, _Env, Input) ->
 	Node = list_to_atom(Input),
