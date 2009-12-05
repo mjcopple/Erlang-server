@@ -5,11 +5,11 @@
 run() ->
 	receive
 		{From, ip_address} ->
-			From ! {self(), ip_address, get_ip_address_string()};
+			From ! {self(), ip_address, get_ip_address_string()},
+			run();
 		{From, known_nodes} ->
 			From ! {self(), known_nodes, monitor:allKnownNodes()}
-	end,
-	run().
+	end.
 
 get_ip_address_string() ->
 	{ok, IPAddress} = inet:getif(),
