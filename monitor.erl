@@ -23,10 +23,9 @@ start() ->
    {mime_types,[{"html","text/html"}, {"css","text/css"}, {"js","application/x-javascript"}]}]).
 
 main(SessionID, _Env, _Input) ->
-	KnownNodes = nodes(known),
 	CurrentNode = node(),
 	IPAddress = ip:get_ip_address_string(),
-	mod_esi:deliver(SessionID, [?Headers, ?Top, "Known nodes:", parseKnownNodes(KnownNodes), ?AddNode, IPAddress, ?Bottom]).
+	mod_esi:deliver(SessionID, [?Headers, ?Top, "Known nodes:", allKnownNodes(), ?AddNode, IPAddress, ?Bottom]).
 
 details(SessionID, _Env, Input) ->
 	Node = list_to_atom(Input),
@@ -34,20 +33,27 @@ details(SessionID, _Env, Input) ->
 		pong ->	
 			Pid = spawn(Node, ip, run, []),
 			Pid ! {self(), ip_address},
+			Pid ! {self(), known_nodes},
+			erlang:yield(),
 			receive {Pid, ip_address, IPAddress} -> done end,
+			receive {Pid, known_nodes, Nodes} -> done end,
 			%IPAddress = ip:get_ip_address_string(),
-			"Running<br>" ++ IPAddress;
+			"Running<br>" ++ IPAddress ++ "<br>Known Nodes: " ++ Nodes;
 		pang -> "Stopped"
 	end,
 	mod_esi:deliver(SessionID, [?Headers, ?Top, "Details for: ", Input, " ", Response, ?BackToMain, ?Bottom]).
 
 add(SessionID, Env, [$n, $o, $d, $e, $= | Input]) ->
-	case net_adm:ping(list_to_atom(Input)) of
+	case net_adm:ping(list_to_atom(yaws_api:url_decode(Input))) of
         pong -> main(SessionID, Env, Input);
         pang -> mod_esi:deliver(SessionID, [?Headers, ?Top, "Can't connect to node ", Input, ?BackToMain, ?Bottom])
     end;
 add(SessionID, _Env, Input) ->	
 	mod_esi:deliver(SessionID, [?Headers, ?Top, "What? ", Input, ?BackToMain, ?Bottom]).
+
+allKnownNodes() ->
+	Nodes = nodes(known),
+	parseKnownNodes(Nodes).
 
 parseKnownNodes(KnownNodes) ->
 	parseKnownNodes(KnownNodes, "</table>").
