@@ -7,7 +7,7 @@ run() ->
 		{From, ip_address} ->
 			From ! {self(), ip_address, get_ip_address_string()};
 		{From, known_nodes} ->
-			From ! {self(), known_nodes, monitor:allKnownNodes()}
+			From ! {self(), known_nodes, monitor:allKnownNodes() ++ "New code"}
 	end,
 	run().
 
