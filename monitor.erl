@@ -1,5 +1,5 @@
 -module(monitor).
--export([start/0, main/3, details/3, add/3]).
+-export([start/0, main/3, details/3, add/3, allKnownNodes/0]).
 
 -define(Headers, "Content-Type: text/html\r\n\r\n").
 -define(Top, "<html><body>").
