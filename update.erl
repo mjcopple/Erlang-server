@@ -18,5 +18,5 @@ update_all() ->
 
 update_all([]) -> done;
 update_all([Head | Tail]) ->
-	update(Head),
+	spawn(Head, update, update, []),
 	update_all(Tail).

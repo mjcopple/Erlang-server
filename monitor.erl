@@ -1,6 +1,6 @@
 -module(monitor).
 
--export([main/3, details/3, add/3, update/3]).
+-export([main/3, details/3, add/3, update/3, update_all/3]).
 -export([start/0, all_known_nodes/0]).
 
 -define(Headers, "Content-Type: text/html\r\n\r\n").
@@ -57,6 +57,10 @@ update(SessionID, Env, Input) ->
 	Node = list_to_atom(Input),
 	spawn(Node, update, update, []),
 	details(SessionID, Env, Input).
+
+update_all(SessionID, Env, Input) ->
+	update:update_all(),
+	main(SessionID, Env, Input).
 
 all_known_nodes() ->
 	Nodes = nodes(known),
