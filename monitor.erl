@@ -1,7 +1,7 @@
 -module(monitor).
 
 -export([main/3, details/3, add/3, update/3, update_all/3]).
--export([start/0, all_known_nodes/0]).
+-export([start/0, all_known_nodes/0, get_time/0]).
 
 -define(Headers, "Content-Type: text/html\r\n\r\n").
 -define(Top, "<html><head><link href=\"../../../styles.css\" rel=\"stylesheet\" type=\"text/css\"><title>Erlang cluster</title></head><body>").
@@ -28,7 +28,8 @@ main(SessionID, _Env, _Input) ->
 	CurrentNode = atom_to_list(node()),
 	IPAddress = ip:get_ip_address_string(),
 	UpdateAll = "<br><a href=update_all>Update All Nodes</a>",
-	mod_esi:deliver(SessionID, [?Headers, ?Top, CurrentNode, "<br>Known nodes:", all_known_nodes(), ?AddNode, IPAddress, UpdateAll, ?Bottom]).
+	Time = get_time(),
+	mod_esi:deliver(SessionID, [?Headers, ?Top, CurrentNode, Time, "<br>Known nodes:", all_known_nodes(), ?AddNode, IPAddress, UpdateAll, ?Bottom]).
 
 details(SessionID, _Env, Input) ->
 	Node = list_to_atom(Input),
@@ -37,6 +38,7 @@ details(SessionID, _Env, Input) ->
 			Pid = spawn(Node, node_details, run, []),
 			Pid ! {self(), ip_address},
 			Pid ! {self(), known_nodes},
+			Pid ! {self(), time},
 			Pid ! {self(), quit},
 			erlang:yield(),
 			receive {Pid, ip_address, IPAddress} -> done end,
@@ -58,6 +60,9 @@ update(SessionID, Env, Input) ->
 	Node = list_to_atom(Input),
 	spawn(Node, update, update, []),
 	details(SessionID, Env, Input).
+
+get_time() ->
+	io_lib:write(erlang:localtime(), 100).
 
 update_all(SessionID, Env, Input) ->
 	update:update_all(),

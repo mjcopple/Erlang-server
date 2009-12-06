@@ -10,6 +10,9 @@ run() ->
 		{From, known_nodes} ->
 			From ! {self(), known_nodes, monitor:all_known_nodes()},
 			node_details:run();
+		{From, time} ->
+			From ! {self(), time, monitor:get_time()},
+			run();
 		{_From, quit} ->
 			done
 	end.
