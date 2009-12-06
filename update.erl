@@ -1,6 +1,6 @@
 -module(update).
 
--export([update/0, update_all/0]).
+-export([update/0, update_all/0, update/1]).
 
 update() ->
 	update(update),
