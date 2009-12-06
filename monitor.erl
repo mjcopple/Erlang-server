@@ -29,7 +29,7 @@ main(SessionID, _Env, _Input) ->
 	IPAddress = ip:get_ip_address_string(),
 	UpdateAll = "<br><a href=update_all>Update All Nodes</a>",
 	Time = get_time(),
-	mod_esi:deliver(SessionID, [?Headers, ?Top, CurrentNode, " ", Time, "<br>Known nodes:", all_known_nodes(), ?AddNode, IPAddress, UpdateAll, ?Bottom]).
+	mod_esi:deliver(SessionID, [?Headers, ?Top, "<div class=date>", Time, "</div>", CurrentNode, "Known nodes:", all_known_nodes(), ?AddNode, IPAddress, UpdateAll, ?Bottom]).
 
 details(SessionID, _Env, Input) ->
 	Node = list_to_atom(Input),
