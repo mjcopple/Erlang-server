@@ -38,7 +38,6 @@ details(SessionID, _Env, Input) ->
 			erlang:yield(),
 			receive {Pid, ip_address, IPAddress} -> done end,
 			receive {Pid, known_nodes, Nodes} -> done end,
-			%IPAddress = ip:get_ip_address_string(),
 			"Running<br>" ++ IPAddress ++ "<br>Known Nodes: " ++ Nodes;
 		pang -> "Stopped"
 	end,
@@ -58,6 +57,8 @@ update(SessionID, Env, Input) ->
 	details(SessionID, Env, Input).
 
 update() ->
+	code:soft_purge(update),
+	code:load_file(update),
 	code:soft_purge(node_details),
 	code:load_file(node_details),
 	code:soft_purge(ip),
