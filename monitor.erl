@@ -29,7 +29,7 @@ main(SessionID, _Env, _Input) ->
 	IPAddress = ip:get_ip_address_string(),
 	UpdateAll = "<br><a href=update_all>Update All Nodes</a>",
 	Time = get_time(),
-	mod_esi:deliver(SessionID, [?Headers, ?Top, CurrentNode, Time, "<br>Known nodes:", all_known_nodes(), ?AddNode, IPAddress, UpdateAll, ?Bottom]).
+	mod_esi:deliver(SessionID, [?Headers, ?Top, CurrentNode, " ", Time, "<br>Known nodes:", all_known_nodes(), ?AddNode, IPAddress, UpdateAll, ?Bottom]).
 
 details(SessionID, _Env, Input) ->
 	Node = list_to_atom(Input),
@@ -65,7 +65,8 @@ update(SessionID, Env, Input) ->
 	details(SessionID, Env, Input).
 
 get_time() ->
-	io_lib:write(erlang:localtime(), 100).
+	{{Year, Month, Day}, {Hour, Minute, Second}} = erlang:localtime(),
+	io_lib:format("~4.10.0b-~2.10.0b-~2.10.0b ~2.10.0b:~2.10.0b:~2.10.0b", [Year, Month, Day, Hour, Minute, Second]).
 
 update_all(SessionID, Env, Input) ->
 	update:update_all(),
