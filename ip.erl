@@ -1,15 +1,6 @@
 -module(ip).
 
--export([run/0, get_ip_address_string/0]).
-
-run() ->
-	receive
-		{From, ip_address} ->
-			From ! {self(), ip_address, get_ip_address_string()},
-			run();
-		{From, known_nodes} ->
-			From ! {self(), known_nodes, monitor:allKnownNodes()}
-	end.
+-export([get_ip_address_string/0]).
 
 get_ip_address_string() ->
 	{ok, IPAddress} = inet:getif(),

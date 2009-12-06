@@ -6,10 +6,10 @@ run() ->
 	receive
 		{From, ip_address} ->
 			From ! {self(), ip_address, ip:get_ip_address_string()},
-			run();
+			node_details:run();
 		{From, known_nodes} ->
 			From ! {self(), known_nodes, monitor:all_known_nodes()},
-			run();
+			node_details:run();
 		{_From, quit} ->
 			done
 	end.

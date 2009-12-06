@@ -1,5 +1,5 @@
 -module(monitor).
--export([start/0, main/3, details/3, add/3, allKnownNodes/0, update/0, update/3]).
+-export([start/0, main/3, details/3, add/3, all_known_nodes/0, update/0, update/3]).
 
 -define(Headers, "Content-Type: text/html\r\n\r\n").
 -define(Top, "<html><head><link href=\"../../../styles.css\" rel=\"stylesheet\" type=\"text/css\"><title>Erlang cluster</title></head><body>").
@@ -25,15 +25,16 @@ start() ->
 main(SessionID, _Env, _Input) ->
 	CurrentNode = atom_to_list(node()),
 	IPAddress = ip:get_ip_address_string(),
-	mod_esi:deliver(SessionID, [?Headers, ?Top, CurrentNode, "<br>Known nodes:", allKnownNodes(), ?AddNode, IPAddress, ?Bottom]).
+	mod_esi:deliver(SessionID, [?Headers, ?Top, CurrentNode, "<br>Known nodes:", all_known_nodes(), ?AddNode, IPAddress, ?Bottom]).
 
 details(SessionID, _Env, Input) ->
 	Node = list_to_atom(Input),
 	Response = case net_adm:ping(Node) of
 		pong ->	
-			Pid = spawn(Node, ip, run, []),
+			Pid = spawn(Node, node_details, run, []),
 			Pid ! {self(), ip_address},
 			Pid ! {self(), known_nodes},
+			Pid ! {self(), quit},
 			erlang:yield(),
 			receive {Pid, ip_address, IPAddress} -> done end,
 			receive {Pid, known_nodes, Nodes} -> done end,
@@ -64,7 +65,7 @@ update() ->
 	code:soft_purge(monitor),
 	code:load_file(monitor).
 
-allKnownNodes() ->
+all_known_nodes() ->
 	Nodes = nodes(known),
 	parseKnownNodes(Nodes).
 
