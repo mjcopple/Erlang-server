@@ -1,5 +1,7 @@
 -module(monitor).
--export([start/0, main/3, details/3, add/3, all_known_nodes/0, update/0, update/3]).
+
+-export([main/3, details/3, add/3, update/3]).
+-export([start/0, all_known_nodes/0]).
 
 -define(Headers, "Content-Type: text/html\r\n\r\n").
 -define(Top, "<html><head><link href=\"../../../styles.css\" rel=\"stylesheet\" type=\"text/css\"><title>Erlang cluster</title></head><body>").
@@ -53,18 +55,8 @@ add(SessionID, _Env, Input) ->
 
 update(SessionID, Env, Input) ->
 	Node = list_to_atom(Input),
-	spawn(Node, monitor, update, []),
+	spawn(Node, update, update, []),
 	details(SessionID, Env, Input).
-
-update() ->
-	code:soft_purge(update),
-	code:load_file(update),
-	code:soft_purge(node_details),
-	code:load_file(node_details),
-	code:soft_purge(ip),
-	code:load_file(ip),
-	code:soft_purge(monitor),
-	code:load_file(monitor).
 
 all_known_nodes() ->
 	Nodes = nodes(known),
