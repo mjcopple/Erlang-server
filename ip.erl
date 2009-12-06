@@ -11,7 +11,7 @@ filter_ip_address(IPAddress) ->
 
 filter_ip_address([], Acc) ->
 	Acc;
-filter_ip_address([{{127,0,0,1},{0,0,0,0},{255,0,0,0}} | Tail], Acc) ->
+filter_ip_address([{{127,0,0,1}, _Broadcast, _Mask} | Tail], Acc) ->
 	%Don't include the loopback address.
 	filter_ip_address(Tail, Acc);
 filter_ip_address([Head | Tail], Acc) ->
