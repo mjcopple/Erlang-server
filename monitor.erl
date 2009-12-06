@@ -49,13 +49,15 @@ details(SessionID, _Env, Input) ->
 	end,
 	mod_esi:deliver(SessionID, [?Headers, ?Top, "Details for: ", Input, " ", Response, "<br><a href=update?", Input, ">Update Code</a>", ?BackToMain, ?Bottom]).
 
-add(SessionID, Env, ["node=" ++ Input]) ->
-	case net_adm:ping(list_to_atom(yaws_api:url_decode(Input))) of
+add(SessionID, Env, "node=" ++ Input) ->
+	Node = yaws_api:url_decode(Input),
+	case net_adm:ping(list_to_atom(Node)) of
         pong -> main(SessionID, Env, Input);
-        pang -> mod_esi:deliver(SessionID, [?Headers, ?Top, "Can't connect to node ", Input, ?BackToMain, ?Bottom])
+        pang -> mod_esi:deliver(SessionID, [?Headers, ?Top, "Can't connect to node ", Node, ?BackToMain, ?Bottom])
     end;
 add(SessionID, _Env, Input) ->	
-	mod_esi:deliver(SessionID, [?Headers, ?Top, "What? ", Input, ?BackToMain, ?Bottom]).
+	Node = yaws_api:url_decode(Input),
+	mod_esi:deliver(SessionID, [?Headers, ?Top, "What? ", Node, ?BackToMain, ?Bottom]).
 
 update(SessionID, Env, Input) ->
 	Node = list_to_atom(Input),
