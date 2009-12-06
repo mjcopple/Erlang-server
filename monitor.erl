@@ -27,7 +27,8 @@ start() ->
 main(SessionID, _Env, _Input) ->
 	CurrentNode = atom_to_list(node()),
 	IPAddress = ip:get_ip_address_string(),
-	mod_esi:deliver(SessionID, [?Headers, ?Top, CurrentNode, "<br>Known nodes:", all_known_nodes(), ?AddNode, IPAddress, ?Bottom]).
+	UpdateAll = "<br><a href=update_all>Update All Nodes</a>",
+	mod_esi:deliver(SessionID, [?Headers, ?Top, CurrentNode, "<br>Known nodes:", all_known_nodes(), ?AddNode, IPAddress, UpdateAll, ?Bottom]).
 
 details(SessionID, _Env, Input) ->
 	Node = list_to_atom(Input),
