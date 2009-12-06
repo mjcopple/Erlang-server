@@ -57,6 +57,8 @@ update(SessionID, Env, Input) ->
 	details(SessionID, Env, Input).
 
 update() ->
+	code:soft_purge(node_details),
+	code:load_file(node_details),
 	code:soft_purge(ip),
 	code:load_file(ip),
 	code:soft_purge(monitor),
