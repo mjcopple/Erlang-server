@@ -43,7 +43,8 @@ details(SessionID, _Env, Input) ->
 			erlang:yield(),
 			receive {Pid, ip_address, IPAddress} -> done end,
 			receive {Pid, known_nodes, Nodes} -> done end,
-			"Running<br>" ++ IPAddress ++ "<br>Known Nodes: " ++ Nodes;
+			receive {Pid, time, Time} -> done end,
+			"Running<br>" ++ IPAddress ++ "<br>" ++ Time ++ "<br>Known Nodes: " ++ Nodes;
 		pang -> "Stopped"
 	end,
 	mod_esi:deliver(SessionID, [?Headers, ?Top, "Details for: ", Input, " ", Response, "<br><a href=update?", Input, ">Update Code</a>", ?BackToMain, ?Bottom]).
