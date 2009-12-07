@@ -67,7 +67,7 @@ update(SessionID, Env, Input) ->
 	details(SessionID, Env, Input).
 
 get_time() ->
-	{{Year, Month, Day}, {Hour, Minute, Second}} = erlang:localtime(),
+	{{Year, Month, Day}, {Hour, Minute, Second}} = calendar:universal_time(),
 	io_lib:format("~4.10.0b-~2.10.0b-~2.10.0b ~2.10.0b:~2.10.0b:~2.10.0b", [Year, Month, Day, Hour, Minute, Second]).
 
 update_all(SessionID, Env, Input) ->
