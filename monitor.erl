@@ -10,7 +10,7 @@
 -define(BackToMain, "<br><a href=main>Back to Main</a>").
 -define(AddNode, "<br><form name=add action=add method=get>Add a node: <input type=text name=node><input type=submit value=Add></form>").
 
--define(Time, "<div class=date>", Time, "</div>").
+-define(Time, "<div class=date>", Time, "<br>", get_time(), "</div>").
 
 start() ->
  inets:start(),
@@ -68,7 +68,8 @@ update(SessionID, Env, Input) ->
 
 get_time() ->
 	{{Year, Month, Day}, {Hour, Minute, Second}} = calendar:universal_time(),
-	io_lib:format("~4.10.0b-~2.10.0b-~2.10.0b ~2.10.0b:~2.10.0b:~2.10.0b", [Year, Month, Day, Hour, Minute, Second]).
+	{_, _, SubSecond} = erlang:now(),
+	io_lib:format("~4.10.0b-~2.10.0b-~2.10.0b ~2.10.0b:~2.10.0b:~2.10.0b ~b", [Year, Month, Day, Hour, Minute, Second, SubSecond]).
 
 update_all(SessionID, Env, Input) ->
 	update:update_all(),
