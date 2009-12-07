@@ -46,10 +46,10 @@ details(SessionID, _Env, Input) ->
 			receive {Pid, ip_address, IPAddress} -> done end,
 			receive {Pid, known_nodes, Nodes} -> done end,
 			receive {Pid, time, Time} -> done end,
-			[?Time, "Running<br>", IPAddress, "<br>Known Nodes: ", Nodes];
-		pang -> "Stopped"
+			[?Time, Input, " is running.<br>", IPAddress, "<br>Known Nodes: ", Nodes, "<br><a href=update?", Input, ">Update Code</a>"];
+		pang -> [Input, "is not running."]
 	end,
-	mod_esi:deliver(SessionID, [?Headers, ?Top, "Details for: ", Input, " ", Response, "<br><a href=update?", Input, ">Update Code</a>", ?BackToMain, ?Bottom]).
+	mod_esi:deliver(SessionID, [?Headers, ?Top, Response, ?BackToMain, ?Bottom]).
 
 add(SessionID, Env, "node=" ++ Input) ->
 	Node = yaws_api:url_decode(Input),
