@@ -11,6 +11,7 @@
 -define(AddNode, "<br><form name=add action=add method=get>Add a node: <input type=text name=node><input type=submit value=Add></form>").
 
 -define(Time, "<div class=date>", Time, "<br>", get_time(), "</div>").
+-define(KnownNodes, "<br>", NumberNodes, " known nodes.", KnownNodes).
 
 start() ->
  inets:start(),
@@ -31,7 +32,8 @@ main(SessionID, _Env, _Input) ->
 	IPAddress = ip:get_ip_address_string(),
 	UpdateAll = "<br><a href=update_all>Update All Nodes</a>",
 	Time = get_time(),
-	mod_esi:deliver(SessionID, [?Headers, ?Top, ?Time, CurrentNode, "<br>Known nodes:", all_known_nodes(), ?AddNode, IPAddress, UpdateAll, ?Bottom]).
+	{KnownNodes, NumberNodes} = all_known_nodes(),
+	mod_esi:deliver(SessionID, [?Headers, ?Top, ?Time, CurrentNode, ?KnownNodes, ?AddNode, IPAddress, UpdateAll, ?Bottom]).
 
 details(SessionID, _Env, Input) ->
 	Node = list_to_atom(Input),
@@ -44,9 +46,9 @@ details(SessionID, _Env, Input) ->
 			Pid ! {self(), quit},
 			erlang:yield(),
 			receive {Pid, ip_address, IPAddress} -> done end,
-			receive {Pid, known_nodes, Nodes} -> done end,
+			receive {Pid, known_nodes, {KnownNodes, NumberNodes}} -> done end,
 			receive {Pid, time, Time} -> done end,
-			[?Time, Input, " is running.<br>", IPAddress, "<br>Known Nodes: ", Nodes, "<br><a href=update?", Input, ">Update Code</a>"];
+			[?Time, Input, " is running.<br>", IPAddress, ?KnownNodes, "<br><a href=update?", Input, ">Update Code</a>"];
 		pang -> [Input, " is not running."]
 	end,
 	mod_esi:deliver(SessionID, [?Headers, ?Top, Response, ?BackToMain, ?Bottom]).
@@ -77,7 +79,9 @@ update_all(SessionID, Env, Input) ->
 
 all_known_nodes() ->
 	Nodes = nodes(known),
-	parseKnownNodes(Nodes).
+	KnownNodes = parseKnownNodes(Nodes),
+	NumberNodes = io_lib:write(length(Nodes), 10),
+	{KnownNodes, NumberNodes}.
 
 parseKnownNodes(KnownNodes) ->
 	parseKnownNodes(KnownNodes, "</table>").
