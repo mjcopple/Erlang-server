@@ -47,7 +47,7 @@ details(SessionID, _Env, Input) ->
 			receive {Pid, known_nodes, Nodes} -> done end,
 			receive {Pid, time, Time} -> done end,
 			[?Time, Input, " is running.<br>", IPAddress, "<br>Known Nodes: ", Nodes, "<br><a href=update?", Input, ">Update Code</a>"];
-		pang -> [Input, "is not running."]
+		pang -> [Input, " is not running."]
 	end,
 	mod_esi:deliver(SessionID, [?Headers, ?Top, Response, ?BackToMain, ?Bottom]).
 
