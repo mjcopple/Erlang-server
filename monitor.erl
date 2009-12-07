@@ -10,6 +10,8 @@
 -define(BackToMain, "<br><a href=main>Back to Main</a>").
 -define(AddNode, "<br><form name=add action=add method=get>Add a node: <input type=text name=node><input type=submit value=Add></form>").
 
+-define(Time, "<div class=date>", Time, "</div>").
+
 start() ->
  inets:start(),
  inets:start(httpd, [
@@ -29,7 +31,7 @@ main(SessionID, _Env, _Input) ->
 	IPAddress = ip:get_ip_address_string(),
 	UpdateAll = "<br><a href=update_all>Update All Nodes</a>",
 	Time = get_time(),
-	mod_esi:deliver(SessionID, [?Headers, ?Top, "<div class=date>", Time, "</div>", CurrentNode, "<br>Known nodes:", all_known_nodes(), ?AddNode, IPAddress, UpdateAll, ?Bottom]).
+	mod_esi:deliver(SessionID, [?Headers, ?Top, ?Time, CurrentNode, "<br>Known nodes:", all_known_nodes(), ?AddNode, IPAddress, UpdateAll, ?Bottom]).
 
 details(SessionID, _Env, Input) ->
 	Node = list_to_atom(Input),
@@ -44,7 +46,7 @@ details(SessionID, _Env, Input) ->
 			receive {Pid, ip_address, IPAddress} -> done end,
 			receive {Pid, known_nodes, Nodes} -> done end,
 			receive {Pid, time, Time} -> done end,
-			"Running<br>" ++ IPAddress ++ "<br>" ++ Time ++ "<br>Known Nodes: " ++ Nodes;
+			[?Time, "Running<br>", IPAddress, "<br>Known Nodes: ", Nodes];
 		pang -> "Stopped"
 	end,
 	mod_esi:deliver(SessionID, [?Headers, ?Top, "Details for: ", Input, " ", Response, "<br><a href=update?", Input, ">Update Code</a>", ?BackToMain, ?Bottom]).
