@@ -7,11 +7,11 @@
 -define(Top, "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\"><html><head><link href=\"../../../styles.css\" rel=\"stylesheet\" type=\"text/css\"><title>Erlang cluster</title></head><body>").
 -define(Bottom, "</body></html>").
 
--define(BackToMain, "<br><a href=main>Back to Main</a>").
+-define(BackToMain, "<p><a href=main>Back to Main</a>").
 -define(AddNode, "<p><form name=add action=add method=get>Add a node: <input type=text name=node><input type=submit value=Add></form>").
 
--define(Time, "<div class=date>", Time, "<br>", get_time(), "</div><p>").
--define(KnownNodes, "<br>", NumberNodes, " known nodes.", KnownNodes).
+-define(Time, "<div class=date>", Time, "<br>", get_time(), "</div>").
+-define(KnownNodes, "<p>", NumberNodes, " known nodes.", KnownNodes).
 
 start() ->
  inets:start(),
@@ -30,7 +30,7 @@ start() ->
 main(SessionID, _Env, _Input) ->
 	CurrentNode = atom_to_list(node()),
 	IPAddress = ip:get_ip_address_string(),
-	UpdateAll = "<br><a href=update_all>Update All Nodes</a>",
+	UpdateAll = "<p><a href=update_all>Update All Nodes</a>",
 	Time = get_time(),
 	{KnownNodes, NumberNodes} = all_known_nodes(),
 	mod_esi:deliver(SessionID, [?Headers, ?Top, ?Time, CurrentNode, ?KnownNodes, ?AddNode, "<p>", IPAddress, UpdateAll, ?Bottom]).
@@ -48,7 +48,7 @@ details(SessionID, _Env, Input) ->
 			receive {Pid, ip_address, IPAddress} -> done end,
 			receive {Pid, known_nodes, {KnownNodes, NumberNodes}} -> done end,
 			receive {Pid, time, Time} -> done end,
-			[?Time, Input, " is running.<br>", IPAddress, ?KnownNodes, "<br><a href=update?", Input, ">Update Code</a>"];
+			[?Time, Input, " is running.<p>", IPAddress, ?KnownNodes, "<p><a href=update?", Input, ">Update Code</a>"];
 		pang -> [Input, " is not running."]
 	end,
 	mod_esi:deliver(SessionID, [?Headers, ?Top, Response, ?BackToMain, ?Bottom]).
