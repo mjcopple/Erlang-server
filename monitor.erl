@@ -89,4 +89,4 @@ parseKnownNodes([], Acc) ->
 	["<table>" | Acc];
 parseKnownNodes([Head | Tail], Acc) ->
 	String = atom_to_list(Head),
-	parseKnownNodes(Tail, ["<tr><td><a href=details?", String, ">", String, "</a>", "</td></tr>", Acc]).
+	parseKnownNodes(Tail, ["<tr><td><a href=\"details?", String, "\">", String, "</a>", "</td></tr>", Acc]).
