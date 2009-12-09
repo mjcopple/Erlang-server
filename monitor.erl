@@ -33,7 +33,7 @@ main(SessionID, _Env, _Input) ->
 	UpdateAll = "<p><a href=update_all>Update All Nodes</a>",
 	Time = get_time(),
 	{KnownNodes, NumberNodes} = all_known_nodes(),
-	mod_esi:deliver(SessionID, [?Headers, ?Top, ?Time, CurrentNode, ?KnownNodes, ?AddNode, "<p>", IPAddress, UpdateAll, ?Bottom]).
+	mod_esi:deliver(SessionID, [?Headers, ?Top, ?Time, "<p>", CurrentNode, ?KnownNodes, ?AddNode, "<p>", IPAddress, UpdateAll, ?Bottom]).
 
 details(SessionID, _Env, Input) ->
 	Node = list_to_atom(Input),
