@@ -75,7 +75,7 @@ get_time() ->
 
 update_all(SessionID, Env, Input) ->
 	update:update_all(),
-	main(SessionID, Env, Input).
+	monitor:main(SessionID, Env, Input).
 
 all_known_nodes() ->
 	Nodes = nodes(known),
