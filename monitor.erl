@@ -8,9 +8,9 @@
 -define(Bottom, "</body></html>").
 
 -define(BackToMain, "<br><a href=main>Back to Main</a>").
--define(AddNode, "<br><form name=add action=add method=get>Add a node: <input type=text name=node><input type=submit value=Add></form>").
+-define(AddNode, "<p><form name=add action=add method=get>Add a node: <input type=text name=node><input type=submit value=Add></form>").
 
--define(Time, "<div class=date>", Time, "<br>", get_time(), "</div>").
+-define(Time, "<div class=date>", Time, "<br>", get_time(), "</div><p>").
 -define(KnownNodes, "<br>", NumberNodes, " known nodes.", KnownNodes).
 
 start() ->
@@ -33,7 +33,7 @@ main(SessionID, _Env, _Input) ->
 	UpdateAll = "<br><a href=update_all>Update All Nodes</a>",
 	Time = get_time(),
 	{KnownNodes, NumberNodes} = all_known_nodes(),
-	mod_esi:deliver(SessionID, [?Headers, ?Top, ?Time, CurrentNode, ?KnownNodes, ?AddNode, IPAddress, UpdateAll, ?Bottom]).
+	mod_esi:deliver(SessionID, [?Headers, ?Top, ?Time, CurrentNode, ?KnownNodes, ?AddNode, "<p>", IPAddress, UpdateAll, ?Bottom]).
 
 details(SessionID, _Env, Input) ->
 	Node = list_to_atom(Input),
