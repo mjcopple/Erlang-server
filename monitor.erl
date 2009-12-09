@@ -4,7 +4,7 @@
 -export([start/0, all_known_nodes/0, get_time/0]).
 
 -define(Headers, "Content-Type: text/html\r\n\r\n").
--define(Top, "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\"><html><head><meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\" /><link href=\"../../../styles.css\" rel=\"stylesheet\" type=\"text/css\"><title>Erlang cluster</title></head><body>").
+-define(Top, "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\"><html><head><meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\"><link href=\"../../../styles.css\" rel=\"stylesheet\" type=\"text/css\"><title>Erlang cluster</title></head><body>").
 -define(Bottom, "</body></html>").
 
 -define(BackToMain, "<p><a href=main>Back to Main</a>").
