@@ -8,7 +8,7 @@
 -define(Bottom, "</body></html>").
 
 -define(BackToMain, "<p><a href=main>Back to Main</a>").
--define(AddNode, "<p><form name=add action=add method=get>Add a node: <input type=text name=node><input type=submit value=Add></form>").
+-define(AddNode, "<p><form name=add action=add method=get><p>Add a node: <input type=text name=node><input type=submit value=Add></form>").
 
 -define(Time, "<div class=date>", Time, "<br>", get_time(), "</div>").
 -define(KnownNodes, "<p>", NumberNodes, " known nodes.", KnownNodes).
